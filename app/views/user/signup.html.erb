@@ -1,0 +1,27 @@
+
+<div class="hero-unit">
+  <% if flash[:warning] then %>
+    <% flash[:warning].each do |e| %>
+      <p class="error">
+        <%= e %>
+      </p>
+    <% end %>
+  <% end %>
+  <p>
+    <%= form_tag("/user/signup", :method => "post") do %>
+      <%= label_tag(:username, "Username") %>
+      <%= text_field_tag(:username, params[:username]) %>
+      <%= label_tag(:password, "Password") %>
+      <%= password_field_tag(:password, params[:password]) %>
+      <%= label_tag(:confirm_password, "Confirm password") %>
+      <%= password_field_tag(:confirm_password, params[:confirm_password]) %>
+      <hr>
+      <%= submit_tag("Sign Up", :class => "btn btn-primary btn-large") %>
+    <% end %>
+  </p>
+</div>
+
+<div class="row-fluid">
+  <div class="span2">
+  </div><!--/span-->    
+</div><!--/row-->

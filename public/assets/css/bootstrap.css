@@ -442,9 +442,7 @@ h4,
 h5,
 h6 {
   margin: 0;
-  font-family: inherit;
   font-weight: bold;
-  color: inherit;
   text-rendering: optimizelegibility;
 }
 
@@ -711,7 +709,6 @@ pre.prettyprint {
 
 pre code {
   padding: 0;
-  color: inherit;
   background-color: transparent;
   border: 0;
 }
@@ -3138,7 +3135,6 @@ input[type="submit"].btn.btn-mini {
 }
 
 .alert-heading {
-  color: inherit;
 }
 
 .alert .close {
@@ -4916,8 +4912,10 @@ a.badge:hover {
 }
 
 .hero-unit {
-  padding: 60px;
+  padding: 20px;
+  padding-bottom: 10px;
   margin-bottom: 30px;
+  margin-top: 30px;
   background-color: #eeeeee;
   -webkit-border-radius: 6px;
      -moz-border-radius: 6px;
@@ -4929,14 +4927,12 @@ a.badge:hover {
   font-size: 60px;
   line-height: 1;
   letter-spacing: -1px;
-  color: inherit;
 }
 
 .hero-unit p {
   font-size: 18px;
   font-weight: 200;
   line-height: 27px;
-  color: inherit;
 }
 
 .pull-right {

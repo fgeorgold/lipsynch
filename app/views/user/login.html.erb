@@ -1,0 +1,21 @@
+
+<div class="hero-unit">
+  <p class="error">
+    <%= flash[:warning] %>
+  </p>
+  <p>
+    <%= form_tag("/user/login", :method => "post") do %>
+      <%= label_tag(:username, "Username") %>
+      <%= text_field_tag(:username) %>
+      <%= label_tag(:password, "Password") %>
+      <%= password_field_tag(:password) %>
+      <hr>
+      <%= submit_tag("Login", :class => "btn btn-primary btn-large") %>
+    <% end %>
+  </p>
+</div>
+
+<div class="row-fluid">
+  <div class="span2">
+  </div><!--/span-->    
+</div><!--/row-->

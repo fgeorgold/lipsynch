@@ -14,6 +14,12 @@ Lipsynch::Application.routes.draw do
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
+  resources :quizzes
+  resources :users
+  match '/user/login' => "user#login"
+  match '/user/logout' => "user#logout"
+  match '/user/signup' => "user#signup"
+  match '/user/welcome' => "user#welcome"
 
   # Sample resource route with options:
   #   resources :products do
@@ -51,6 +57,7 @@ Lipsynch::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   root :to => 'application#index'
+
 
   # See how all your routes lay out with "rake routes"
 

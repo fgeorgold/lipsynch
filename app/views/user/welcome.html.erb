@@ -1,0 +1,15 @@
+
+<div class="hero-unit">
+  <h1> Welcome </h1>
+  <p> You are logged in </p>
+</div>
+
+<div class="row-fluid">
+  <div class="span9">
+    <h2> Here are some quizzes for you: </h2>
+
+    <% Quiz.all.each do |q| %>
+      <%= link_to q.name, q %>
+    <%end%>
+  </div><!--/span-->    
+</div><!--/row-->
