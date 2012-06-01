@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Lipsynch</title>
+  <title>Lipsync</title>
 
       <!-- Le styles -->
     <link href="/assets/css/bootstrap.css" rel="stylesheet">
@@ -33,7 +33,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="/">LipSync</a>
+          <a class="brand" href="/">LipSync </a>
           <% if signed_in? then %>
           <div class="btn-group pull-right">
             <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
@@ -41,7 +41,7 @@
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
-              <li><a href="/user/<%=current_user.id%>">Profile</a></li>
+              <li><a href="/user/welcome">Profile</a></li>
               <li class="divider"></li>
               <li><a href="/user/logout">Log Out</a></li>
             </ul>
@@ -65,8 +65,8 @@
           <div class="well sidebar-nav">
             <ul class="nav nav-list">
               <li class="nav-header">Sidebar</li>
-              <li class="active"><a href="#"><i class="icon-home"></i>Home</a></li>
-              <li><a href="/user/welcome"><i class="icon-book"></i>Tests</a></li>
+              <li <%='class=active' if request.original_fullpath=="/" %>><a href="/"><i class="icon-home"></i>Home</a></li>
+              <li <%='class=active' if request.original_fullpath=="/user/welcome" %>><a href="/user/welcome"><i class="icon-book"></i>Quizzes</a></li>
               <li><a href="/user/welcome"><i class="icon-tasks"></i>Stats</a></li>
               <li><a href="/user/welcome"><i class="icon-cog"></i>Settings</a></li>
               

@@ -14,7 +14,9 @@ Lipsynch::Application.routes.draw do
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
+
   resources :quizzes
+  match '/quizzes/:id' => "quizzes#show"
   resources :users
   match '/user/login' => "user#login"
   match '/user/logout' => "user#logout"

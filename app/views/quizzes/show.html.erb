@@ -2,17 +2,21 @@
 
 <div class="row">
     <div class="span2"></div>
-    <div class="span10">
+    <div class="span5">
         </br>
-        <h1> <%= @quiz.name %> - <%=@q_num%>/10</h1>
+        <h1> <%= @quiz.name %> - question <%=@q_num+1%></h1>
+        <div class="progress progress-striped">
+          <div class="bar" style="width: <%=@q_num%>0%;"> </div>
+        </div>
+        <h2> score: <%=session[:score]%></h2>
         
     </div>
 </div> 
 
 <div class="row">
     <div class"span2"></div>
-    <div class="span10">
-        <div id="player" onclick="play();">
+    <div class="span5" onselect="0;">
+        <div id="player">
             <!-- The video iframe will be displayed here -->
         </div>  
     </div>
@@ -20,7 +24,7 @@
 
 <div class="row">
     <div class="span2"></div>
-    <div class="span6">
+    <div class="span5">
         </br>
         <h2>What is being pronounced? </h2> 
         </br>
@@ -28,27 +32,30 @@
     </div>
 </div>
 <div class="row">
-    <div class="span5">
+    <div class="span2">
         
     </div>
-    <div class="span3">  
-      <button id="button_one"   class="btn-large btn" data-toggle="button"><%=@questions[0].answer%></button>
-      <button id="button_two"   class="btn-large btn" data-toggle="button"><%=@questions[1].answer%></button>
-      <button id="button_three" class="btn-large btn" data-toggle="button"><%=@questions[2].answer%></button>
-      <button id="button_four"  class="btn-large btn" data-toggle="button"><%=@questions[3].answer%></button>
+    <div class="span6">  
+      <span>
+        <div id="choices" class="btn-group">
+          <button id="button-one"   class="btn-large btn-primary btn" onclick="grade(this)"><%=@questions[0].answer%></button>
+          <button id="button-two"   class="btn-large btn-primary btn" onclick="grade(this)"><%=@questions[1].answer%></button>
+          <button id="button-three" class="btn-large btn-primary btn" onclick="grade(this)"><%=@questions[2].answer%></button>
+          <button id="button-four"  class="btn-large btn-primary btn" onclick="grade(this)"><%=@questions[3].answer%></button>
+        </div>
+        <%= form_tag(request.original_fullpath, :method => "post") do %>
+
+          <input type="hidden" name="q_num" value="<%=@q_num+1%>" />
+          <input id="is-correct" type="hidden" name="result" value="correct" />
+          <%= submit_tag("next", :id=>"next-button", :style=>"float: right; display:none;", :class => "btn btn-success btn-large") %>
+        <%end%>
+      </span>
     </div>
 </div>
 
 <div class="row">
     <div class="span2"></div>  
-    <div class="span7">
-        </br>
-        <h3> Score: 6/10 </h3>
-        <div class="progress progress-success progress-striped">
-            <div class="bar" style="width: 60%;"> </div>
-            
-        </div>
-    </div>
+    <div id="answer" class="span5" style="display:none;"><h3>Answer is <span id="answer-color"><%=@question.answer%></span></h3></div>
 </div>   
 
 <!-- Javascript for this page -->
@@ -94,6 +101,31 @@
     function onPlayerReady(event) {
         event.target.mute();
     }
+
+    answered = false;
+    function grade(item)
+    {
+      if (answered) return;
+      answered = true;
+      item.className += " active";
+      player.unMute();
+      document.getElementById("answer").style.display="block";
+      document.getElementById("next-button").style.display="block";
+
+      a = item.innerHTML;
+      b = "<%=@question.answer%>";
+      if (a == b)
+      {
+        document.getElementById("answer-color").style.color="green";
+        document.getElementById("is-correct").value = "correct";
+      }
+      else
+      {
+        document.getElementById("answer-color").style.color="red";
+        document.getElementById("is-correct").value = "incorrect";
+      }
+    }
+    
     </script>
 
 
