@@ -1,4 +1,4 @@
 class Quiz < ActiveRecord::Base
-  # attr_accessible :title, :body
-  has_many :short_answer_question
+  attr_accessible :name
+  has_many :questions
 end

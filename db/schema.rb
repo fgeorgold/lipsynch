@@ -10,17 +10,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120525131907) do
+ActiveRecord::Schema.define(:version => 20120601122811) do
 
-  create_table "quizzes", :force => true do |t|
-    t.string   "name"
+  create_table "questions", :force => true do |t|
+    t.string   "youtube_id"
+    t.string   "answer"
+    t.integer  "quiz_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
-  create_table "short_answer_questions", :force => true do |t|
-    t.string   "video_url"
-    t.string   "answer"
+  create_table "quizzes", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

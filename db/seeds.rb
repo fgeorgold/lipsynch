@@ -5,3 +5,14 @@
 #
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Emanuel', :city => cities.first)
+#
+
+quiz1 = Quiz.create!(:name => "Syllables Quiz")
+Question.create!(:quiz => quiz1, :youtube_id => "nAHtUKzYhtU", :answer => "fa")
+Question.create!(:quiz => quiz1, :youtube_id => "d1rpSeU8dJE", :answer => "a" )
+Question.create!(:quiz => quiz1, :youtube_id => "E8WolIw0nHw", :answer => "ba")
+Question.create!(:quiz => quiz1, :youtube_id => "8m1oH3mov6Q", :answer => "sa")
+Question.create!(:quiz => quiz1, :youtube_id => "hvbZtKLMAhA", :answer => "da")
+
+
+
