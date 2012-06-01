@@ -1,52 +1,141 @@
 <h1>Quiz#show</h1>
 
-<p>Quiz name:
-
-<%= Quiz.first.name %>
-</p>
 
 
     
       
       <div class="row">
-        <div class="span12">
-          <h2>Question 1</h2>
-           <iframe width="640" height="480" src="http://www.youtube.com/embed/nAHtUKzYhtU" frameborder="0" allowfullscreen></iframe>
+       <div class="span2"></div>
+        <div class="span10">
+        </br>
+          <h1> <%= Quiz.first.name %> - 3/10</h1>
+          	</br>
+          	 
         </div>
-		
-      </div>  
+      </div> 
+     
       <div class="row">
-      	 <div class="span12">
-          <h2>What is being pronounced? </h2>
-          <form action="">
-			<input type="radio" name="answer" value="GA" /> Fo <br />
-			<input type="radio" name="answer" value="GO" /> Fa
-		  </form>
-
-          <ul class="pager">
-  			<li>
-			    <a href="#">Previous</a>
-		    </li>
-  		    <li>
-			    <a href="#">Next</a>
-		  </li>
-		</ul>
-       	  </div>
-       	  <div class="span6">
-       	  <h3> Correct </h3>
+      		<div class="span2"></div>
+      		<div class="span10">
+      			<div id="player">
+          	 	<!-- The video iframe will be displayed here -->
+	           	</div>	
+      		</div>
+      </div>
+       
+      
+      
+      <div class="row">
+         <div class="span2"></div>
+      	 <div class="span6">
+      	 </br>
+          <h2>What is being pronounced? </h2> 
+          	</br>
+          	</br>
+         </div>
+         <div class="span4">
+         				</br>
+         				</br>
+       	  				<a class="btn-large btn-danger" href="#">Stop&raquo;</a>
+       	 </div> 
+      </div>
+      <div class="row">
+      	<div class="span5">
+      			
+      	</div>
+      	<div class="span3">	
+  				<button id="button_one" class="btn-large btn-primary" data-toggle="button">Ga</button>
+  				<button id="button_two" class="btn-large btn" data-toggle="button">Fa</button>
+       	 </div>
+      </div>
+      
+      <div class="row">
+      	  <div class="span2"></div>	
+       	  <div class="span7">
+       	  </br>
+       	  <h3> Score: 6/10 </h3>
        	  		<div class="progress progress-success progress-striped
      				active">
-			  		<div class="bar" style="width: 60%;">
-			  		</div>
-				</div>
-		<h3> Incorrect </h3>
-				<div class="progress progress-danger progress-striped
-     				active">
-			  		<div class="bar" style="width: 40%;">
-			  		</div>
+			  		<div class="bar" style="width: 60%;"> </div>
+			  		
 				</div>
        	  </div>
-       	  
-      </div>
+       </div>	 
+       
+    <div class="row">
+      	  <div class="span2"></div>	
+       	  <div class="span8">
+       	  </br>
+       	  <h3> Tests</h3>
+       	  		<table class="table table-striped">
+  					<thead>
+    					<tr>
+      						<th>Test #</th>
+      						<th>Score </th>
+   						</tr>
+  					</thead>
+				    <tbody>
+					    <tr>
+					      <td>1</td>
+					      <td>8/10</td>
+					    </tr>
+					    <tr>
+					      <td>2</td>
+					      <td>5/10</td>
+					    </tr>
+					    <tr>
+					      <td>3</td>
+					      <td>7/10</td>
+					    </tr>
+				  </tbody>
+				  <thead>
+    					<tr>
+      						<th>Mean</th>
+      						<th>7/10 </th>
+   						</tr>
+  					</thead>
+				</table>
+       	  </div>
+       </div>	    
+       
+       
+    <!-- Javascript for this page -->
+    <script>
+    $('#button_one').popover();
+    
+    $("#button_one").click(function() {
+    	$("#button_one").popover('show');
+    });
+    
+    </script>
+       
+    <!-- Javascript to mute the Video -->   
+    <script>      
+       	  // 2. This code loads the IFrame Player API code asynchronously.
+      var tag = document.createElement('script');
+      tag.src = "http://www.youtube.com/player_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+      // 3. This function creates an <iframe> (and YouTube player)
+      //    after the API code downloads.
+      var player;
+      function onYouTubePlayerAPIReady() {
+        player = new YT.Player('player', {
+          playerVars: { 'autoplay': 1, 'controls': 1,'autohide':1,'wmode':'opaque' },
+          // change this to the id of the video you want to play
+          videoId: 'nAHtUKzYhtU',
+          events: {
+            'onReady': onPlayerReady}
+        });
+      }
+
+      // 4. The API will call this function when the video player is ready.
+      function onPlayerReady(event) {
+        event.target.mute();
+      }
+	</script>
+     	  
+
 
 
