@@ -1,11 +1,137 @@
-<div class="hero-unit">
-<p>
-quizzes show stub
-</p>
-</div>
+<h1>Quizzes#show</h1>
+
+      <div class="row">
+       <div class="span2"></div>
+        <div class="span10">
+        </br>
+          <h1> <%= Quiz.first.name %> - 3/10</h1>
+          	</br>
+          	 
+        </div>
+      </div> 
+     
+      <div class="row">
+      		<div class="span2"></div>
+      		<div class="span10">
+      			<div id="player">
+          	 	<!-- The video iframe will be displayed here -->
+	           	</div>	
+      		</div>
+      </div>
+       
+      
+      
+      <div class="row">
+         <div class="span2"></div>
+      	 <div class="span6">
+      	 </br>
+          <h2>What is being pronounced? </h2> 
+          	</br>
+          	</br>
+         </div>
+         <div class="span4">
+         				</br>
+         				</br>
+       	  				<a class="btn-large btn-danger" href="#">Stop&raquo;</a>
+       	 </div> 
+      </div>
+      <div class="row">
+      	<div class="span5">
+      			
+      	</div>
+      	<div class="span3">	
+  				<button id="button_one" class="btn-large btn-primary" data-toggle="button">Ga</button>
+  				<button id="button_two" class="btn-large btn" data-toggle="button">Fa</button>
+       	 </div>
+      </div>
+      
+      <div class="row">
+      	  <div class="span2"></div>	
+       	  <div class="span7">
+       	  </br>
+       	  <h3> Score: 6/10 </h3>
+       	  		<div class="progress progress-success progress-striped
+     				active">
+			  		<div class="bar" style="width: 60%;"> </div>
+			  		
+				</div>
+       	  </div>
+       </div>	 
+       
+    <div class="row">
+      	  <div class="span2"></div>	
+       	  <div class="span8">
+       	  </br>
+       	  <h3> Tests</h3>
+       	  		<table class="table table-striped">
+  					<thead>
+    					<tr>
+      						<th>Test #</th>
+      						<th>Score </th>
+   						</tr>
+  					</thead>
+				    <tbody>
+					    <tr>
+					      <td>1</td>
+					      <td>8/10</td>
+					    </tr>
+					    <tr>
+					      <td>2</td>
+					      <td>5/10</td>
+					    </tr>
+					    <tr>
+					      <td>3</td>
+					      <td>7/10</td>
+					    </tr>
+				  </tbody>
+				  <thead>
+    					<tr>
+      						<th>Mean</th>
+      						<th>7/10 </th>
+   						</tr>
+  					</thead>
+				</table>
+       	  </div>
+       </div>	    
+       
+       
+    <!-- Javascript for this page -->
+    <script>
+    $('#button_one').popover();
+    
+    $("#button_one").click(function() {
+    	$("#button_one").popover('show');
+    });
+    
+    </script>
+       
+    <!-- Javascript to mute the Video -->   
+    <script>      
+       	  // 2. This code loads the IFrame Player API code asynchronously.
+      var tag = document.createElement('script');
+      tag.src = "http://www.youtube.com/player_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+      // 3. This function creates an <iframe> (and YouTube player)
+      //    after the API code downloads.
+      var player;
+      function onYouTubePlayerAPIReady() {
+        player = new YT.Player('player', {
+          playerVars: { 'autoplay': 1, 'controls': 1,'autohide':1,'wmode':'opaque' },
+          // change this to the id of the video you want to play
+          videoId: 'nAHtUKzYhtU',
+          events: {
+            'onReady': onPlayerReady}
+        });
+      }
+
+      // 4. The API will call this function when the video player is ready.
+      function onPlayerReady(event) {
+        event.target.mute();
+      }
+	</script>
+     	  
 
 
-<div class="row-fluid">
-  <div class="span2">
-  </div><!--/span-->    
-</div><!--/row-->
+
