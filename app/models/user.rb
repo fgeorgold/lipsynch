@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   attr_protected :id, :salt
 
   attr_accessor :password  
+  attr_accessible :login, :password  
 
   def self.authenticate(login, pass)
     u=find(:first, :conditions=>["login = ?", login])

@@ -7,6 +7,9 @@
 #   Mayor.create(:name => 'Emanuel', :city => cities.first)
 #
 
+user1 = User.create!(:login => "elie", :password => "noune")
+user2 = User.create!(:login => "asdf", :password => "asdfasdf")
+
 quiz1 = Quiz.create!(:name => "Syllables Quiz")
 Question.create!(:quiz => quiz1, :youtube_id => "nAHtUKzYhtU", :answer => "fa")
 Question.create!(:quiz => quiz1, :youtube_id => "d1rpSeU8dJE", :answer => "a" )
